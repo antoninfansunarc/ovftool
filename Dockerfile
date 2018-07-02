@@ -1,5 +1,5 @@
 FROM ubuntu:15.10
-MAINTAINER Uwe Dauernheim <uwe@dauernheim.net>
+MAINTAINER antoninfant <antoninfant>
 
 ENV OVFTOOL_FILENAME=VMware-ovftool-4.1.0-2459827-lin.x86_64.bundle
 
