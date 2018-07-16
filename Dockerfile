@@ -1,19 +1,11 @@
-FROM ubuntu:15.10
-MAINTAINER antoninfant <antoninfant>
+FROM photon
 
-RUN apt-get update
+RUN tdnf -y install tar gzip sed gawk ncurses-compat
 
-RUN apt-get install wget
+ADD VMware-ovftool-4.2.0-4586971-lin.x86_64.bundle /tmp/
+RUN chmod +x /tmp/VMware-ovftool-4.2.0-4586971-lin.x86_64.bundle
 
-RUN wget wget http://ftp.tucha13.net/pub/software/VMware-ovftool-4.1.0/VMware-ovftool-4.1.0-2459827-lin.x86_64.bundle
-ENV OVFTOOL_FILENAME=VMware-ovftool-4.1.0-2459827-lin.x86_64.bundle
+RUN echo -e "/w00t\n" >> /tmp/answer
+RUN /tmp/VMware-ovftool-4.2.0-4586971-lin.x86_64.bundle --eulas-agreed --required --console < /tmp/answer
 
-ADD $OVFTOOL_FILENAME /tmp/
-
-WORKDIR /root
-
-RUN /bin/sh /tmp/$OVFTOOL_FILENAME --console --required --eulas-agreed && \
-    rm -f /tmp/$OVFTOOL_FILENAME
-
-ENTRYPOINT ["ovftool"]
-
+CMD ["/bin/bash"]
