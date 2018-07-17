@@ -9,5 +9,6 @@ WORKDIR /root
 
 RUN /bin/sh /tmp/$OVFTOOL_FILENAME --console --required --eulas-agreed && \
     rm -f /tmp/$OVFTOOL_FILENAME
+    ENTRYPOINT ["ovftool"]
 
 
