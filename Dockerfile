@@ -29,7 +29,7 @@ RUN apt-get install -yq build-essential \
     apt-get clean
 
 # Install vCLI https://developercenter.vmware.com/web/dp/tool/vsphere_cli/6.0
-ADD VMware-vSphere-Perl-SDK-6.0.0-2503617.x86_64.tar.gz /tmp/
+ADD VMware-vSphere-Perl-SDK-6.0.0-2503617.x86_64.tar.gz  /tmp/
 
 # Bypass stupid question
 RUN sed -i '2621,2634d' /tmp/vmware-vsphere-cli-distrib/vmware-install.pl
