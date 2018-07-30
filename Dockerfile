@@ -1,5 +1,5 @@
-FROM ubuntu:15.10
-MAINTAINER Uwe Dauernheim <uwe@dauernheim.net>
+FROM ubuntu:latest
+MAINTAINER antoninfant
 
 ENV OVFTOOL_FILENAME=VMware-ovftool-4.2.0-4586971-lin.x86_64.bundle
 
@@ -9,6 +9,8 @@ WORKDIR /root
 
 RUN /bin/sh /tmp/$OVFTOOL_FILENAME --console --required --eulas-agreed && \
     rm -f /tmp/$OVFTOOL_FILENAME  
+    
+RUN apt-get update --fix-missing
 
 RUN apt-get install -yq build-essential \
       git \
