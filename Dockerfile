@@ -9,7 +9,8 @@ WORKDIR /root
 
 RUN /bin/sh /tmp/$OVFTOOL_FILENAME --console --required --eulas-agreed && \
     rm -f /tmp/$OVFTOOL_FILENAME
-
+RUN apt-get install sshpass
+RUN apt-get install expect
 
 # Run Bash when the image starts
 CMD ["/bin/bash"]
